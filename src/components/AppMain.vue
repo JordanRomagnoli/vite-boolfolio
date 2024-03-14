@@ -29,16 +29,24 @@ import SingleProject from './SingleProject.vue';
                 />
                 
             </div>
-            <div class="frame-navigator">
-                <button class="first-page" :disabled="store.currentPage <= 1"  @click="$emit('nextPage', --store.currentPage)">
-                    <<
-                </button>
+            <div class="row justify-content-center ">
+                <div class="frame-navigator">
+                    <button class="first-page" :disabled="store.currentPage <= 1"  @click="$emit('nextPage', --store.currentPage)">
+                        <<
+                    </button>
 
-               <span>{{ store.currentPage }}</span>
-
-                <button class="last-page" :disabled="store.currentPage >= store.lastPage" @click="$emit('nextPage', ++store.currentPage)">
-                    >>
-                </button >
+                    <button 
+                    v-for="(singlePage, i=1) in store.lastPage"
+                    @click="$emit('nextPage', i+1)"
+                    >
+                        {{ i+1 }}
+                    </button>
+    
+    
+                    <button class="last-page" :disabled="store.currentPage >= store.lastPage" @click="$emit('nextPage', ++store.currentPage)">
+                        >>
+                    </button >
+                </div>
             </div>
 
         </div>

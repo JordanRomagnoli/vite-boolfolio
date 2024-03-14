@@ -2,7 +2,21 @@
     export default {
         data() {
             return { 
-                 
+                isImageVisible:{
+                    title: '',
+                    visibility: false,
+                },
+            }
+        },
+        methods: {
+            showImg(title){
+                this.isImageVisible.title = title;
+                this.isImageVisible.visibility = true;
+            },
+
+            hiddenImg(){
+                this.isImageVisible.title = '';
+                this.isImageVisible.visibility = false;
             }
         },
         props: {
@@ -47,9 +61,18 @@
                     </span>
                 </div>    
 
-                <a class="show-button align-self-baseline">
+                <a 
+                @mouseenter="showImg(project.title)"
+                @mouseleave="hiddenImg()"
+                class="show-button align-self-baseline">
                     Mostra
                 </a>
+
+                <div class="img-frame" :class="{
+                    'show' : isImageVisible.title == project.title && isImageVisible.visibility == true,
+                }">
+                    <img :src="'http://127.0.0.1:8000/storage/' + project.cover_img">
+                </div>
 
             </div>
         </div>
@@ -116,7 +139,24 @@
                 background-color: black;
                 color: white;
                 transition: background-color 0.5s ;
-            }  
+            }
+            
+            .img-frame{
+                width: 250px;
+                object-fit: cover;
+                object-position: center;
+                position: absolute;
+                left: 20px;
+                bottom: -100px;
+                z-index: 1000;
+                display: none;
+                &.show{
+                    display: block;
+                }
+                img{
+                    width: 100%;
+                }
+            }
         }
 
     }

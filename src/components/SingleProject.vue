@@ -61,12 +61,13 @@
                     </span>
                 </div>    
 
-                <a 
+                <router-link
+                :to="{ name: 'single-project', params: { slug: project.slug } }"
                 @mouseenter="showImg(project.title)"
                 @mouseleave="hiddenImg()"
                 class="show-button align-self-baseline">
                     Mostra
-                </a>
+                </router-link>
 
                 <div class="img-frame" :class="{
                     'show' : isImageVisible.title == project.title && isImageVisible.visibility == true,

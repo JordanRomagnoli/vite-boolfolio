@@ -11,12 +11,36 @@ import { store } from '../store';
                 store
             }
         },
+        methods: {
+            formatDate(dateString) {
+                let date = new Date(dateString);
+
+                let day = date.getDate();
+                let month = date.getMonth() + 1;
+                let year = date.getFullYear();
+
+                day = day < 10 ? '0' + day : day;
+                month = month < 10 ? '0' + month : month;
+
+                return day + '/' + month + '/' + year;
+            },
+
+            formatTime(dateString) {
+                let date = new Date(dateString);
+
+                let hours = date.getHours();
+                let minutes = date.getMinutes();
+
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+
+                return hours + ':' + minutes;
+            },
+        },
         created(){
             Axios.get(`http://127.0.0.1:8000/api/project/${this.$route.params.slug}`)
             .then((res) => {
-                console.log(res);
                 this.project = res.data.results;
-                console.log(this.project);
             })
         }
     }
@@ -24,6 +48,7 @@ import { store } from '../store';
 
 <template>
     <section id="show-guest">
+
         <div class="row g-0">
             <div class="col d-flex justify-content-center">
                 <div class="my-card">
@@ -36,7 +61,34 @@ import { store } from '../store';
                             {{ project.content }}
                         </p>
 
-                        
+                        <div class="img-frame">
+                            <img :src="'http://127.0.0.1:8000/storage/' + project.cover_img">
+                        </div>
+
+                        <div class="info">
+                        Creato il: 
+                        <span>
+                            {{ formatDate(project.created_at) }}
+                        </span>
+                        <br>
+                        Alle: 
+                        <span>
+                            {{ formatTime(project.created_at)  }}
+                        </span>
+                    </div>
+
+                    <div v-if="project.updated_at != project.created_at">
+                        Modificato il: 
+                        <span>
+                            {{ formatDate(project.updated_at) }}
+                        </span>
+                        <br>
+                        Alle: 
+                        <span>
+                            {{ formatTime(project.updated_at) }}
+                        </span>
+                    </div>
+                    
                         
                     </div>
                 </div>
@@ -73,18 +125,18 @@ import { store } from '../store';
                     margin-bottom: 40px;
                 }
 
-                div{
-                    .cover_img{
+                
+                .img-frame{
 
-                        width: 30%;
-                        object-fit: cover;
-                        object-position: center;
-                        margin-bottom: 40px;
-                        img{
-                            width: 100%;
-                        }
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    margin-bottom: 40px;
+                    img{
+                        width: 100%;
                     }
                 }
+                
 
                 .info{
 

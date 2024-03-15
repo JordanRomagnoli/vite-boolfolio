@@ -2,6 +2,7 @@
 
 import { store } from '../store';
 import SingleProject from '../components/SingleProject.vue';
+import Frame from '../components/Frame.vue';
 
 export default {
     data() {
@@ -12,6 +13,7 @@ export default {
     components: {
 
         SingleProject,
+        Frame,
     }
 }
 </script>
@@ -19,6 +21,9 @@ export default {
 <template>
     <section id="index-guest">
         <div class="container">
+
+            <Frame/>
+
             <div class="row">
 
                 <SingleProject

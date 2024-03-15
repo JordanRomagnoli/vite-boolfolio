@@ -17,9 +17,7 @@
                         Home
                     </router-link>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Dashboard</a>
-                </li>
+                
                 <li>
                     <a href="">I nostri progetti</a>
                 </li>

@@ -1,19 +1,14 @@
 
 <script>
 
-import { store } from '../store';
-import SingleProject from './SingleProject.vue';
-
-
     export default {
         data() {
             return { 
 
-                store 
             }
         },
         components: {
-            SingleProject,
+
         }
     }
     </script>

@@ -19,7 +19,9 @@
                 </li>
                 
                 <li>
-                    <a href="">I nostri progetti</a>
+                    <router-link :to="{ name: 'contact-us' }">
+                        Contact
+                    </router-link>
                 </li>
             </ul>
 

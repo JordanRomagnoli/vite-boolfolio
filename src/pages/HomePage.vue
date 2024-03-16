@@ -93,15 +93,4 @@ export default {
         }
         }
 
-        ::-webkit-scrollbar {
-        width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-        background-color: #cccccc;
-        }
-
-        ::-webkit-scrollbar-thumb {
-        background-color: #a8a8a8;
-    }
 </style>

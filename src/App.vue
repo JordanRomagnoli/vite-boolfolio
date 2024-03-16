@@ -95,4 +95,16 @@ export default {
         background: linear-gradient(135deg, hsla(0, 0%, 100%, 1) 0%, hsla(293, 39%, 84%, 1) 100%);
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #cccccc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #a8a8a8;
+    }
+
 </style>

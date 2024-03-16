@@ -63,7 +63,11 @@ export default {
             </button>
         </div>
         <div class="right">
-
+            <div v-for="(singleProject, i) in store.projects" class="preview" :class="{
+                'selected' : i == counter,
+            }">
+                <img :src="'http://127.0.0.1:8000/storage/' + singleProject.cover_img">
+            </div>
         </div>
     </div>
 </template>
@@ -128,6 +132,25 @@ export default {
         .right{
             width: 20%;
             border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            .preview{
+                height: calc(100% / 3);
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                padding: 0px;
+                filter: brightness(0.5);
+                transition: all .3s ease-in-out;
+                &.selected{
+                    padding: 5px;
+                    filter: brightness(1);
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
     }
 </style>

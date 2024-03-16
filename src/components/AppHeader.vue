@@ -20,7 +20,7 @@
                 
                 <li>
                     <router-link :to="{ name: 'contact-us' }">
-                        Contact
+                        Contattaci
                     </router-link>
                 </li>
             </ul>
